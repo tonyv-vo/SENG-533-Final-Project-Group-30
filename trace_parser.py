@@ -56,11 +56,11 @@ data = pd.DataFrame(list(results.items()), columns = ["Persistence Type", "Count
 # Sort the DataFrame by the count of each persistence type
 data = data.sort_values("Count", ascending = False)
 # Reset the index of the DataFrame
-data = data.reset_index()
+data = data.reset_index().head(5)
 
 # Plot the count of different persistence types
 plt.figure(figsize = (12, 12))
-bar_plot = sns.barplot(x = "Persistence Type", y = "Count", data = data, palette = "viridis")
+bar_plot = sns.barplot(x = "Persistence Type", y = "Count", data = data, palette = "viridis", errorbar = "sd")
 
 # Add the count of each persistence type on top of the bars, the x-axis labels, and the y-axis label
 plt.title("Count of Different Persistence Types in TeaStore Log")
